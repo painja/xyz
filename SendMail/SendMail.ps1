@@ -6,7 +6,13 @@ param
     [parameter(mandatory=$true)][string]$TestBuild,
     [parameter(mandatory=$true)][string]$IsHBI,
     [parameter(mandatory=$true)][string]$MailTo,
-    [parameter(mandatory=$true)][string]$SourcesDirectory
+    [parameter(mandatory=$true)][string]$SourcesDirectory,
+    [parameter(mandatory=$true)][string]$MailFrom,
+    [parameter(mandatory=$true)][string]$MailPwd,
+    [parameter(mandatory=$true)][string]$MailCc,
+    [parameter(mandatory=$true)][string]$SMTP,
+    [parameter(mandatory=$true)][string]$Port
+    
 )
 
 Start-Sleep -Seconds 30
@@ -23,4 +29,4 @@ $dllPath = Join-Path $dllFolderPath "Microsoft.IT.EPRS.Build.Tasks.dll"
 
 Add-Type -Path $dllPath
 $sendMail = New-Object Microsoft.IT.EPRS.Build.Tasks.SendMailTask
-$sendMail.Send($BuildId, $TeamFoundationCollectionUri, $TeamProjectName, $testBld, $isHBIProject, $MailTo, $SourcesDirectory)
+$sendMail.Send($BuildId, $TeamFoundationCollectionUri, $TeamProjectName, $testBld, $isHBIProject, $MailTo, $SourcesDirectory, $MailFrom, $MailPwd, $MailCc, $SMTP, $Port)
