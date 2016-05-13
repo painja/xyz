@@ -15,7 +15,7 @@ param
     
 )
 
-Start-Sleep -Seconds 30
+Start-Sleep -Seconds 600
 Write-Output "BuildId: $($BuildId)"
 
 if($TestBuild -eq "true"){$testBld = $true}
